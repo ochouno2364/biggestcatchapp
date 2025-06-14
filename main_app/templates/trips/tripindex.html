@@ -7,38 +7,29 @@
 
 <section class="page-header">
   <h1>My Trips</h1>
-  <img
-    src="{% static 'images/car.png' %}"
-    alt="A cool cat"
-  />
-  <img
-    src="{% static 'images/sandwhich.png' %}"
-    alt="sandwhich"
-  />
-  <img
-    src="{% static 'images/water.png' %}"
-    alt="water"
-  />
+
 </section>
 
 <section class="card-container">
   {% for trip in trips %}
   <div class="card">
-    <div class="card-content">
-      <div class="card-img-container">
-        <img
-          src="{% static 'images/fish.png' %}"
-          alt="trip"
-        />
-      </div>
-      <h2 class="card-title">{{ trip.name }}</h2>
-      {% if trip.fish > 0 %}
-      <p>On {{ trip.name }} you caught {{ trip.fish }} with {{ trip.gear }}</p>
-      {% else %}
-      <p>On {{ trip.name }} you didnt catch any fish but you had fun.</p>
-      {% endif %}
-      <p><small>{{ trip.date }}</small></p>
-    </div>
+    <a href="{% url 'trip-detail' trip.id %}">
+      <div class="card-content">
+       <div class="card-img-container">
+         <img
+           src="{% static 'images/fish.png' %}"
+           alt="trip"
+         />
+       </div>
+       <h2 class="card-title">{{ trip.name }}</h2>
+       {% if trip.fish > 0 %}
+       <p>On {{ trip.name }} you caught {{ trip.fish }} with {{ trip.gear }}</p>
+       {% else %}
+       <p>On {{ trip.name }} you didnt catch any fish but you had fun.</p>
+       {% endif %}
+       <p><small>{{ trip.date }}</small></p>
+     </div>
+    </a>
   </div>
   {% endfor %}
 </section>

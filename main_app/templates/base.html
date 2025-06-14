@@ -5,30 +5,83 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/fish.png' %}" />
-    <title>Biggest Catch</title>
+    <title>Biggest Catch App</title>
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    {% block head %} 
-    {% endblock %}
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    {% block head %}{% endblock %}
   </head>
   <body>
     <header>
-      <div class="header-logo-container">
-        <a href="/">
-          <img src="{% static 'images/fish.png' %}" alt="The Biggest Catch Logo" />
-        </a>
+      <div class="header-container">
+        <!-- Logo -->
+        <div class="logo">
+          <a href="/"
+            ><img
+              src="{% static 'images/fish.png' %}"
+              alt="Fish Logo"
+          /></a>
+        </div>
+
+        <!-- Right side container -->
+        <div class="header-right">
+          <!-- Hamburger button (initially showing hamburger bars) -->
+          <button id="menuToggle" class="hamburger-menu" onclick="toggleMenu()">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+          <!-- Shopping Cart Icon -->
+          <div id="cartIcon" class="cart-icon-container">
+            <a href="/trip">
+              <img src="{% static 'images/cart.svg' %}" alt="Cart Icon" />
+            </a>
+          </div>
+        </div>
       </div>
-      <nav>
+      <!-- Navigation menu (hidden by default) -->
+      <nav class="nav-links" id="nav-links">
         <ul>
-          <li><a href="/about">About</a></li>
           <li><a href="/">Home</a></li>
-          <li><a href="/trips">My Trips</a></li>
+          <li><a href="{% url 'trip-index' %}">My Trips</a></li>
+          <li><a href="/cart"></a>Honey Holes</li>
+          <li><a href="/#app-features">Browse Fish</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li style="color: #b7b7b7">Book Trip</li>
+          <li style="color: #b7b7b7">Account</li>
         </ul>
       </nav>
     </header>
-    <main>
-     {% block content %} 
-     {% endblock %}
-     </main>
+    <main>{% block content %}{% endblock %}</main>
+    <script>
+      // JavaScript to toggle the navigation menu
+      function toggleMenu() {
+        var navMenu = document.getElementById("nav-links");
+        var menuBtn = document.getElementById("menuToggle");
+        var cartIcon = document.getElementById("cartIcon");
+
+        // If the nav menu is currently shown, hide it and revert the button
+        if (navMenu.style.display === "block") {
+          navMenu.style.display = "none";
+          // Restore hamburger icon (three bars)
+          menuBtn.innerHTML =
+            '<span class="bar"></span><span class="bar"></span><span class="bar"></span>';
+          // Show the cart icon
+          if (cartIcon) cartIcon.style.display = "block";
+        } else {
+          // Show the nav menu and change the button to an X
+          navMenu.style.display = "block";
+          menuBtn.innerHTML = "X";
+          // Hide the cart icon while the menu is displayed
+          if (cartIcon) cartIcon.style.display = "none";
+        }
+      }
+    </script>
+    {% block extra_js %}{% endblock %}
   </body>
 </html>
+
+ 

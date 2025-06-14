@@ -1,275 +1,210 @@
-
-/* static/css/base.css  */
-
-html {
-  box-sizing: border-box;
+* {
+  font-family: "Fredoka", sans-serif;
+  src: url("{% static 'fonts/Fredoka.ttf' %}") format('truetype');
 }
-
-/* The Universal Selector */
-*, /* All elements*/
-*::before, /* All ::before pseudo-elements */
-*::after {
-  /* All ::after pseudo-elements */
-  /* height & width will now include border & padding by default
-     but can be over-ridden as needed */
-  box-sizing: inherit;
+h1 {
+  font-weight: 500;
 }
-
-/* resets font size to be 62.5% of the user preference - 
-     in most browser configurations this will be 10px */
-:root {
-  font-size: 62.5%;
+h2 {
+  font-weight: 400;
 }
-
-body {
-  margin: 0;
+p,
+a {
+  font-weight: 400;
+  text-decoration: none;
+  color: #000;
+}
+/* ---------- All Container Max-Widths ---------- */
+body,
+main,
+.container,
+header,
+footer {
+  max-width: 500px;
+  margin: 0 auto;
+}
+/* ---------- Header Container ---------- */
+.header-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-    'Helvetica Neue', sans-serif;
-  min-height: 100vh;
-  --nav-bg: rgba(104, 197, 248, 0.7);
-  --nav-bg-ff: rgba(104, 197, 248, 0.9);
-  --borders: rgb(36, 116, 248) solid 2px;
-  --text-color: rgb(17, 20, 17);
-  --link-hover-color: rgb(16, 56, 158);
-  --button-bg: rgb(245, 245, 245);
-  --button-bg-hover: rgb(226, 226, 226);
-  --submit: rgb(26, 128, 0);
-  --warn: rgb(255, 102, 0);
-  --danger: rgb(220, 20, 30);
-  --secondary: rgb(57, 57, 57);
-  --card-box-shadow: 5px 5px 6px -1px #aaa;
-  --font-xtreme: 4.2rem;
-  --font-xxl: 3.6rem;
-  --font-xl: 2.4rem;
-  --font-l: 1.8rem;
-  --font-reg: 1.6rem;
-  --card-border-radius: 6px;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #01030f;
 }
 
-header {
-  width: 100%;
-  background: var(--nav-bg-ff); /* rgba(104, 197, 248, .9) */
-  border-bottom: var(--borders);
+/* ---------- Logo Styling ---------- */
+.logo img {
+  max-width: 100%;
+  height: auto;
+  min-height: 30px;
+  max-height: 50px;
 }
 
-nav {
-  margin: 10px;
+/* ---------- Header Right Container for Hamburger and Cart Icon ---------- */
+.header-right {
+  display: flex;
+  align-items: center;
 }
 
-ul {
-  margin: 0;
-  list-style: none;
-  padding: 0;
+/* ---------- Hamburger Menu Button ---------- */
+.hamburger-menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 10px;
+  font-size: 24px; /* Used when showing 'X';*/
+  color: #d13d10; /* Used when showing 'X';*/
+  justify-content: center;
+}
+.hamburger-menu .bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #d13d10;
+  margin: 4px 0;
+  transition: all 0.3s;
+  border-radius: 2px;
 }
 
-main {
-  width: 100%;
+/* ---------- Cart Icon Container ---------- */
+.cart-icon-container {
   padding: 0 10px;
 }
-
-h2 {
-  font-size: var(--font-xl);
+.cart-icon-container img {
+  width: 30px;
+  height: auto;
 }
 
-nav a {
-  text-decoration: none;
-  color: var(--text-color);
-  font-weight: 600;
-  font-size: 16px;
-}
-
-nav a:hover {
-  color: var(--link-hover-color);
-}
-
-nav ul {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-nav li {
-  padding: 5px 8px;
-}
-
-.header-logo-container {
-  margin: auto;
-  padding: 10px 20px 0;
+/* ---------- Navigation Menu Dropdown ---------- */
+.nav-links {
+  display: none; /* Hidden by default */
   max-width: 500px;
+  background-color: #fff;
+  width: 100%;
+  top: 54px;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
-
-.page-header {
-  display: flex;
-  align-items: center;
-  margin: 20px;
-}
-
-.btn {
-  font-size: var(--font-l);
-  padding: 8px 16px;
-  border-radius: 6px;
-  border-width: 2px;
-  border-style: solid;
-  text-decoration: none;
-  background-color: var(--button-bg);
-  font-weight: 600;
-  cursor: pointer;
-  font-family: inherit;
-  margin-right: 10px;
-}
-
-.btn:hover {
-  background-color: var(--button-bg-hover);
-}
-
-.submit {
-  color: var(--submit);
-  border-color: var(--submit);
-}
-
-.secondary {
-  color: var(--secondary);
-  border-color: var(--secondary);
-}
-
-.warn {
-  color: var(--warn);
-  border-color: var(--warn);
-}
-
-.danger {
-  color: var(--danger);
-  border-color: var(--danger);
-}
-
-.page-header h1 {
-  font-size: var(--font-xxl);
+.nav-links ul {
+  list-style: none;
   margin: 0;
+  padding: 0;
+}
+.nav-links ul li {
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+  color: #000;
+  margin-right: 50px;
+}
+.nav-links ul li:hover {
+  background-color: #a5f41d95;
+  transition: ease;
+}
+/* ---------- All App Buttons  ---------- */
+.cta-button {
+  background-color: #a6f41d;
+  color: #242e7a;
+  border: 3px solid #242e7a;
+  border-radius: 50px;
+  padding: 15px 40px;
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 0 #242e7a;
 }
 
-.page-header img {
-  height: 40px;
-  margin-left: 15px;
+.cta-button2 {
+  background-color: #242e7a;
+  color: #a6f41d;
+  border: 3px solid #a6f41d;
+  border-radius: 50px;
+  padding: 15px 40px;
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 0 #a6f41d;
 }
 
-.page-header img:first-of-type {
-  margin-left: 20px;
+/* Hover effect */
+.cta-button:hover {
+  background-color: #a6f41d;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #242e7a;
 }
 
-.page-content {
-  font-size: var(--font-reg);
+.cta-button2:hover {
+  background-color: #242e7a;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #a6f41d;
 }
 
-@media only screen and (min-width: 768px) {
-  header {
-    position: sticky;
-    display: flex;
-    flex-direction: row;
-    top: 0;
-    align-items: center;
-  }
+/* Active/pressed effect */
+.cta-button, .cta-button2:active {
+  transform: translateY(4px);
+  box-shadow: 0 6px 0 #242e7a;
+}
+.alt-cta-button {
+  background-color: #fff;
+  color: #242e7a;
+  border: 3px solid #242e7a;
+  border-radius: 50px;
+  padding: 15px 40px;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  transition: all 0.2s ease;
 
-  main {
-    max-width: 1300px;
-    min-height: calc(100vh - 53px);
-  }
-
-  nav,
-  .header-logo-container {
-    margin: 10px 0;
-    padding: 0 15px;
-  }
-
-  /* visual fix to help align logo */
-  .header-logo-container {
-    padding-top: 3px;
-  }
-
-  nav {
-    margin-left: auto;
-    display: flex;
-    justify-content: center;
-  }
-
-  nav ul {
-    flex-wrap: nowrap;
-  }
-
-  .header-logo-container {
-    width: 213px;
-  }
-
-  .page-header h1 {
-    font-size: var(--font-xtreme);
-  }
-
-  .page-header img {
-    height: 50px;
-    margin-left: 20px;
-  }
-
-  .page-header img:first-of-type {
-    margin-left: 25px;
-  }
-
-  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    header {
-      background: var(--nav-bg);
-      -webkit-backdrop-filter: blur(3px);
-      backdrop-filter: blur(3px);
-    }
-  }
+  /* Black drop shadow */
+  box-shadow: 0 4px 0 #000000;
 }
 
-@media only screen and (min-width: 1024px) {
-  main {
-    min-height: calc(100vh - 55px);
-  }
-
-  header {
-    margin: 20px 20px 0 20px;
-    width: calc(100vw - 40px);
-    max-width: 1920px;
-    top: 20px;
-    background-color: transparent;
-    border-bottom: none;
-  }
-
-  nav,
-  .header-logo-container {
-    margin: 0;
-    background: var(--nav-bg-ff);
-    border: var(--borders);
-    border-radius: 18px;
-  }
-
-  nav {
-    margin-left: auto;
-  }
-
-  .header-logo-container {
-    /* visual fix to help align logo */
-    padding-top: 6px;
-    width: 256px;
-    height: 35px;
-  }
-
-  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    header {
-      -webkit-backdrop-filter: none;
-      backdrop-filter: none;
-    }
-
-    nav,
-    .header-logo-container {
-      background: rgba(104, 197, 248, 0.6);
-      -webkit-backdrop-filter: blur(3px);
-      backdrop-filter: blur(3px);
-    }
-  }
+/* Hover effect */
+.alt-cta-button:hover {
+  background-color: #fff;
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #000000;
 }
+
+/* Active/pressed effect */
+.alt-cta-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 6px 0 #000000;
+}
+/* ---------- All App Cards  ---------- */
+.card {
+  background-color: #fff;
+  color: #242e7a;
+  border: 3px solid #242e7a;
+  border-radius: 20px;
+  padding: 15px 40px;
+  font-size: 14px;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  box-shadow: 0 4px 0 #181e51;
+  max-width: 400px !important;
+}
+#blue-card {
+  background-color: #87e6e0;
+  box-shadow: 0 6px 0 #000000;
+}
+#yellow-card {
+  background-color: #fff7a6;
+}
+#beige-card {
+  background-color: #fffde0;
+}
+#white-card {
+  background-color: #ffffff;
+}
+
