@@ -17,5 +17,9 @@
     {% endif %}
     <p>This is what you caught</p>
   </div>
+  <div class="cat-actions">
+    <a href="{% url 'trip-update' trip.id %}" class="btn warn">Edit</a>
+    <a href="{% url 'trip-delete' trip.id %}" class="btn danger">Delete</a>
+  </div>
 </section>
 {% endblock %}

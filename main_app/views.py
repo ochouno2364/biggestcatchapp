@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Trip
 
 
@@ -36,3 +37,17 @@ def trip_index(request):
 def trip_detail(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
     return render(request, 'trips/tripdetail.html', {'trip': trip})
+
+
+class TripCreate(CreateView):
+    model = Trip
+    fields = '__all__'
+
+class TripUpdate(UpdateView):
+    model = Trip
+    fields = '__all__'
+
+class TripDelete(DeleteView):
+    model = Trip
+    success_url = '/trips/'
+    
