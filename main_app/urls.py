@@ -15,6 +15,6 @@ urlpatterns = [
     path('fish/<int:pk>/', views.FishDetail.as_view(), name='fish-detail'),
     path('fish/', views.FishList.as_view(), name='fish-index'),
     path('fish/<int:pk>/update', views.FishUpdate.as_view(), name='fish-update'),
-    path('fish/<int:pk>/delete', views.FishDelete.as_view(), name='fish-update'),
+    path('fish/<int:pk>/delete', views.FishDelete.as_view(), name='fish-delete'),
 
 ]
