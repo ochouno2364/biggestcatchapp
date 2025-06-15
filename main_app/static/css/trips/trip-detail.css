@@ -195,13 +195,13 @@
     justify-content: start;
   }
 
-  .cat-img {
+  .trip-img {
     width: 25%;
     max-width: 250px;
     margin-right: 25px;
   }
 
-  .location-toy-container {
+  .location-container {
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;

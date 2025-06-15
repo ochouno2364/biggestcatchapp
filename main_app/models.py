@@ -24,6 +24,15 @@ WEATHER = (
     ('F', 'Foggy'),
 )
 
+BAIT = (
+    ('W', 'Worms'),
+    ('S', 'Shrimp'),
+    ('C', 'Cutbait'),
+    ('M', 'Minow'),
+    ('C', 'Crawfish'),
+    ('L', 'Lure'),
+)
+
 class Trip(models.Model):
     name = models.CharField(max_length=50)
     date = models.DateField('Date Of Trip')
@@ -47,3 +56,17 @@ class Location(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.get_body_display()} at {self.address}"
+
+
+class Fish(models.Model):
+    name = models.CharField(max_length=50)
+    species = models.CharField(max_length=50)
+    color = models.CharField(max_length=50)
+    weight = models.IntegerField()
+    bait = models.CharField(max_length=50, default=[0][0], choices=BAIT)
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('fish-detail', kwargs ={'pk': self.id})
