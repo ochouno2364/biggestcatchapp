@@ -21,5 +21,35 @@
     <a href="{% url 'trip-update' trip.id %}" class="btn warn">Edit</a>
     <a href="{% url 'trip-delete' trip.id %}" class="btn danger">Delete</a>
   </div>
+   <!-- Existing cat-container above -->
+<div class="location-container">
+  <section class="locations">
+    <div class="subsection-title">
+      <h2>Trip Location</h2>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Address</th>
+          <th>Body Type</th>
+          <th>Weather</th>
+          <th>Fresh Or Salt</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for location in trip.location_set.all %}
+          <tr>
+            <td>{{location.name}}</td>
+            <td>{{location.address}}</td>
+            <td>{{location.get_body_display}}</td>
+            <td>{{location.get_weather_display}}</td>
+            <td>{{location.get_water_display}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
 </section>
 {% endblock %}

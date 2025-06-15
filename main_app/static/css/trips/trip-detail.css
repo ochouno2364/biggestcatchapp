@@ -24,7 +24,7 @@
   margin-top: 20px;
 }
 
-.feedings-toy-container {
+.location-container {
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
@@ -72,29 +72,29 @@
   color: var(--submit);
 }
 
-.cat-details h1 {
+.trip-details h1 {
   font-size: var(--font-xxl);
   margin: 15px 0 3px;
 }
 
-.cat-details h2 {
+.trip-details h2 {
   font-size: var(--font-xl);
   margin: 0 0 10px;
   margin-top: 0;
   margin-bottom: 10px;
 }
 
-.cat-details h3 {
+.trip-details h3 {
   margin: 20px 0 10px;
   font-size: var(--font-l);
 }
 
-.cat-details p {
+.trip-details p {
   font-size: var(--font-reg);
   margin: 5px 0;
 }
 
-.feedings-toy-container > section {
+.location-container > section {
   width: 80%;
   min-width: 360px;
   border: var(--borders);
@@ -116,13 +116,13 @@
   margin-left: 16px;
 }
 
-.feedings h2,
+.locations h2,
 .toys h2 {
   font-size: 3.2rem;
   margin: 0;
 }
 
-.feedings h3,
+.locations h3,
 .toys h3 {
   font-size: var(--font-xl);
   margin: 10px 0;
@@ -140,25 +140,25 @@
   padding: 3px;
 }
 
-.feedings table {
+.locations table {
   width: calc(100% - 16px);
   text-align: left;
   border-collapse: collapse;
   margin: 0 8px;
 }
 
-.feedings td {
+.locations td {
   padding: 8px 5px;
   font-size: var(--font-reg);
 }
 
-.feedings th {
+.locations th {
   font-size: var(--font-l);
   padding: 5px 5px 0;
   border-bottom: rgb(36, 116, 248) solid 2px;
 }
 
-.feedings tr:nth-child(even) {
+.locations tr:nth-child(even) {
   background-color: #f3f3fd;
 }
 
@@ -188,7 +188,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .cat-container {
+  .trip-container {
     padding: 35px 30px;
     flex-direction: row;
     align-items: center;
@@ -201,19 +201,19 @@
     margin-right: 25px;
   }
 
-  .feedings-toy-container {
+  .location-toy-container {
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
   }
 
-  .feedings-toy-container > section {
+  .location-container > section {
     width: 45%;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-  .feedings-toy-container {
+  .location-container {
     padding: 0 40px;
   }
 }
