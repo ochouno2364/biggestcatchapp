@@ -44,17 +44,23 @@
       </div>
       <!-- Navigation menu (hidden by default) -->
       <nav class="nav-links" id="nav-links">
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="{% url 'trip-index' %}">My Trips</a></li>
-          <li><a href="{% url 'trip-create' %}">Add A Trip</a></li>
-          <li><a href="{% url 'fish-create' %}">Caught A Fish?</a></li>
-          <li><a href="{% url 'fish-index' %}">Honey Hole</a></li>
-          <li><a href="{% url 'about' %}">About</a></li>
-          <li style="color: #b7b7b7">Book Trip</li>
-          <li style="color: #b7b7b7">Account</li>
-        </ul>
-      </nav>
+       <ul>
+         {% if user.is_authenticated %}
+           <li><a href="{% url 'home' %}">Logout</a></li>
+           <li><a href="{% url 'trip-index' %}">My Trips</a></li>
+           <li><a href="{% url 'trip-create' %}">Add A Trip</a></li>
+           <li><a href="{% url 'fish-create' %}">Caught A Fish?</a></li>
+           <li><a href="{% url 'fish-index' %}">Honey Hole</a></li>
+           <li><a href="{% url 'about' %}">About</a></li>
+           <li style="color: #b7b7b7">Book Trip</li>
+           <li style="color: #b7b7b7">Account</li>
+         {% else %}
+           <li><a href="{% url 'about' %}">About</a></li>
+           <li><a href="{% url 'home' %}">Login</a></li>
+         {% endif %}
+       </ul>
+     </nav>
+
     </header>
     <main>{% block content %}{% endblock %}</main>
     <script>

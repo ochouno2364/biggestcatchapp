@@ -4,14 +4,15 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from .models import Trip, Fish
 from .forms import LocationForm
+from django.contrib.auth.views import LoginView
 
 
 
 # Create your views here.
 
 
-def home(request):
-    return render(request, 'home.html')
+class Home(LoginView):
+    template_name = 'home.html'
 
 
 def about(request):

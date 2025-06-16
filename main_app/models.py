@@ -1,5 +1,7 @@
 from django.db import models
 from django.urls import reverse
+from datetime import date
+from django.contrib.auth.models import User
 
 # Create your models here.
 BODIES = (
@@ -56,6 +58,7 @@ class Trip(models.Model):
     date = models.DateField('Date Of Trip')
     gear = models.CharField(max_length=100)
     fish = models.ManyToManyField(Fish)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.name
@@ -66,7 +69,7 @@ class Trip(models.Model):
 
 
 
-    
+
 
 class Location(models.Model):
     name = models.CharField(max_length=50)
