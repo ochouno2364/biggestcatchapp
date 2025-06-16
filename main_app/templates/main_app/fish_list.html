@@ -13,8 +13,8 @@
 <section class="card-container">
   {% if fish_list %}
   {% for fish in fish_list %}
-    <div class="card" style="background-color: {{ fish.color }};" >
-      <div class="card-bg" style="background-color: {{ fish.color }};"></div>
+    <div class="card" style=" border-color: rgb(17, 4, 1); background-color: {{ fish.color }};" >
+      <div class="card-bg" style="border-color: rgb(26, 6, 2);  background-color: {{ fish.color }};"></div>
       <a href="{% url 'fish-detail' fish.id %}">
         <div class="card-content">
           <h2>{{ fish.name }}</h2>
@@ -23,6 +23,8 @@
         </div>
       </a>
     </div>
+    <br>
+    <br>
   {% endfor %}
   {% else %}
      <p>No fish caugh yet. Lets take a trip!</p>

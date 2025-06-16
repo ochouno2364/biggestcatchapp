@@ -32,8 +32,20 @@
   </div>
   </div>
   <div class="trip-actions">
-    <a href="{% url 'trip-update' trip.id %}" class="btn warn">Edit</a>
-    <a href="{% url 'trip-delete' trip.id %}" class="btn danger">Delete</a>
+    <a href="{% url 'trip-update' trip.id %}" style="background-color: var(--primary-color, #5aa5eb);
+  color: white;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;">Edit</a>
+    <a href="{% url 'trip-delete' trip.id %}" style="background-color: var(--primary-color, #c90606);
+  color: white;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;">Delete</a>
   </div>
 </section>
    <!-- Existing cat-container above -->
@@ -42,19 +54,26 @@
     <div class="subsection-title">
       <h2>Trip Location</h2>
     </div>
-    <form
+    <div class="subsection-content">
+    <form style="border: 5px solid rgb(12, 11, 11); border-style: hidden;"
       method="post"
       action="{% url 'add-location' trip.id %}"
-      class="subsection-content"
       autocomplete="off"
       >
        {% csrf_token %} 
        {{ location_form.as_p }}
-       <button type="submit" class="btn submit">Add Location</button>
+       <button type="submit" style="background-color: var(--primary-color, #0ab121);
+  color: white;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;">Add Location</button>
     </form>
-    <span>
-
-    </span>
+    </div>
+    <br>
+    <br>
+    <div style="border: 5px solid rgb(12, 11, 11);" class="subsection-content">
     <table>
       <thead>
         <tr>
@@ -77,7 +96,8 @@
         {% endfor %}
       </tbody>
     </table>
-  </section>
+  </div> 
+ </section>
 </div>
 <section class="fish">
   <div class="subsection-title">
@@ -94,7 +114,13 @@
           </a>
           <form action="{% url 'remove-fish' trip.id fish.id %}" method="post">
           {% csrf_token %}
-          <button type="submit" class="btn submit">Remove Fish</button>
+          <button type="submit" style="background-color: var(--primary-color, #c90606);
+  color: white;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;">Remove Fish</button>
         </form>
         </div>
       {% endfor %} 
@@ -114,7 +140,13 @@
         </a>
         <form action="{% url 'associate-fish' trip.id fish.id %}" method="post">
           {% csrf_token %}
-          <button type="submit" class="btn submit">Assign Fish</button>
+          <button type="submit" style="background-color: var(--primary-color, #06c930);
+  color: white;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;">Assign Fish</button>
         </form>
       </div>
     {% endfor %} 

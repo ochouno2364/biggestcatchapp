@@ -1,10 +1,13 @@
-{% extends 'base.html' %} {% load static %} {% block head %}
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
 <link
   rel="stylesheet"
   href="{% static 'css/home.css' %}"
 />
-{% endblock %} {% block content %}
-
+{% endblock %}
+{% block content %}
+<main style="background-color:#d13d10;">
 <section class="logo-container">
   <div class="trip-container">
     <img
@@ -14,12 +17,13 @@
   </div>
 </section>
 <section>
-  <form action="{% url 'home' %}" method="post" class="login">
+  <form style="border: 5px solid rgb(12, 11, 11);" action="{% url 'home' %}" method="post" class="login">
     <h1>Login</h1>
     {% csrf_token %} {{ form.as_p }}
     <input type="hidden" name="next" value="{{ next }}" />
     <button type="submit" class="btn">Login</button>
   </form>
 </section>
+</main>
 
 {% endblock %}

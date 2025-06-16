@@ -4,7 +4,7 @@
   href="{% static 'css/trips/trip-index.css' %}"
 />
 {% endblock %} {% block content %}
-
+<main style="background-color:#d13d10; border: 5px solid black;">
 <section class="page-header">
   <h1>My Trips</h1>
 
@@ -25,7 +25,7 @@
        {% if trip.fish > 0 %}
        <p>On {{ trip.name }} you caught {{ trip.fish }} with {{ trip.gear }}</p>
        {% else %}
-       <p>On {{ trip.name }} you didnt catch any fish but you had fun.</p>
+       <p>On {{ trip.name }} you brought along some snacks and your {{ trip.gear }}</p>
        {% endif %}
        <p><small>{{ trip.date }}</small></p>
      </div>
@@ -33,5 +33,6 @@
   </div>
   {% endfor %}
 </section>
+</main>
 
 {% endblock %}

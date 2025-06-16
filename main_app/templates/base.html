@@ -23,7 +23,7 @@
             ><img
               src="{% static 'images/fish.png' %}"
               alt="Fish Logo"
-          /></a>
+          /><h3 style="color: #f8f7f7; font-family:fantasy;">The Biggest Catch</h3></a>
         </div>
 
         <!-- Right side container -->
@@ -43,15 +43,15 @@
         </div>
       </div>
       <!-- Navigation menu (hidden by default) -->
-      <nav class="nav-links" id="nav-links">
+      <nav class="nav-links" id="nav-links" style="background-color: black;">
        <ul>
          {% if user.is_authenticated %}
-           <li><a href="{% url 'home' %}">Logout</a></li>
-           <li><a href="{% url 'trip-index' %}">My Trips</a></li>
-           <li><a href="{% url 'trip-create' %}">Add A Trip</a></li>
-           <li><a href="{% url 'fish-create' %}">Caught A Fish?</a></li>
-           <li><a href="{% url 'fish-index' %}">Honey Hole</a></li>
-           <li><a href="{% url 'about' %}">About</a></li>
+           <li><a href="{% url 'home' %}"  style="color: rgb(245, 242, 242);">Logout</a></li>
+           <li><a href="{% url 'trip-index' %}" style="color: rgb(245, 242, 242);">My Trips</a></li>
+           <li><a href="{% url 'trip-create' %}" style="color: rgb(245, 242, 242);">Add A Trip</a></li>
+           <li><a href="{% url 'fish-create' %}" style="color: rgb(245, 242, 242);">Caught A Fish?</a></li>
+           <li><a href="{% url 'fish-index' %}" style="color: rgb(245, 242, 242);">Honey Hole</a></li>
+           <li><a href="{% url 'about' %}" style="color: rgb(245, 242, 242);">About</a></li>
            <li style="color: #b7b7b7">Book Trip</li>
            <li style="color: #b7b7b7">Account</li>
          {% else %}

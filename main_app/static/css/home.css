@@ -1,20 +1,12 @@
-main {
+/* main {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   height: 100%;
-}
+} */
 
-html, body {
-  background-color: black;
-  margin: 0;
-  padding: 0;
-  color: white;
-  height: 100%;
-}
-
-main > section {
+section {
   width: 100%;
   padding: 10px 8px;
   display: flex;
