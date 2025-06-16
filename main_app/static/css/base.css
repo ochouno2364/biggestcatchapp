@@ -30,7 +30,8 @@ footer {
   align-items: center;
   justify-content: space-between;
   padding: 1rem;
-  width: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
   background-color: #01030f;
 }
 
