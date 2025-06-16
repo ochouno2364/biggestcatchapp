@@ -21,8 +21,8 @@
     <div class="subsection-content">
     {% if trip.fish.count %} 
       {% for fish in trip.fish.all %}
-        <div class="fish-container">
-          <div class="color-block" style="background-color: {{ fish.color }}"></div>
+        <div class="fish-container" >
+          <div style="background-color: {{ fish.color }}"></div>
           <a href="{% url 'fish-detail' fish.id %}">
             <p>A {{ fish.color }} {{ fish.name }}</p>
           </a>
@@ -121,10 +121,9 @@
       padding: 2rem;
       border: 4px solid rgb(20, 8, 0);
       border-radius: 12px;
-      background-color: #79f666;
+      background-color: {{ fish.color }};
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-          <div class="color-block" style="background-color: {{ fish.color }}"></div>
           <a href="{% url 'fish-detail' fish.id %}">
             <p>A {{ fish.color }} {{ fish.name }}</p>
           </a>
@@ -155,10 +154,9 @@
       padding: 2rem;
       border: 4px solid rgb(20, 8, 0);
       border-radius: 12px;
-      background-color: #35a5e2;
+      background-color: {{ fish.color }};
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-        <div class="color-block" style="background-color: {{ fish.color }}"></div>
         <a href="{% url 'fish-detail' fish.id %}">
           <p>A {{ fish.color }} {{ fish.name }}</p>
         </a>
