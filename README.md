@@ -42,8 +42,11 @@
 * Allow users to see each others location from diffrent users.
 * Allow a user to include a picture of there cath.
 * Allow users to message one another through the app.
-* Set up a user inbox.
+* Use a location map the generates from the address
+* Generate seasonal fish tendencies
 * Using an api to generate other locations from the web.
+* CLEAN UP APP!!
+
 
 
 ## <a name="deployment"></a>Deployed Link
