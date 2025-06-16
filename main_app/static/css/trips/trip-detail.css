@@ -1,10 +1,12 @@
 /* trip-detail.css */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
 
 body, html {
   margin: 0;
   padding: 0;
-  width: 100%;
-  box-sizing: border-box;
+  
 }
 
 main,
@@ -50,10 +52,20 @@ nav.nav-links li a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
+.page-wrapper {
+  max-width: 960px;        /* or 1140px for a wider layout */
+  margin: 0 auto;          /* this centers it horizontally */
+  padding: 1rem;           /* some space on mobile */
+}
+
+
+
 .trip-img {
+  height: auto;
   width: 75%;
   max-width: 350px;
 }
@@ -65,10 +77,11 @@ nav.nav-links li a:hover {
 
 .trip-details {
   width: 98%;
+  min-width: 250px;
 }
 
 .trip-actions {
-  margin-top: 20px;
+  margin-top: 1rem;
 }
 
 .location-container {
@@ -153,6 +166,39 @@ nav.nav-links li a:hover {
   margin-bottom: 20px;
 }
 
+header {
+  background-color: black;
+  padding: 1rem;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between; /* for logo on left, menu/cart on right */
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.logo img {
+  max-width: 60px;
+  margin: 0 auto;
+}
+
+.logo h3 {
+  margin: 0.5rem 0 0;
+  font-family: fantasy;
+  color: #f8f7f7;
+}
+
+
 .subsection-title img {
   height: 42px;
   margin-left: 8px;
@@ -228,6 +274,12 @@ nav.nav-links li a:hover {
   width: 0.1px;
   height: 0.1px;
 }
+.subsection-content::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
 
 #file-name {
   margin-bottom: 10px;
@@ -282,5 +334,11 @@ nav.nav-links li a:hover {
 @media only screen and (min-width: 1024px) {
   .location-container {
     padding: 0 40px;
+  }
+}
+
+@media (min-width: 768px) {
+  .page-wrapper {
+    padding: 2rem;
   }
 }

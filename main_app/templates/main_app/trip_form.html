@@ -9,12 +9,21 @@
     {% if object %}
       <h1>Edit {{ object.name }}</h1>
     {% else %}
-      <h1>Add a Trip</h1>
+      <h1 style="text-align: center;">Add a Trip</h1>
     {% endif %}
   <img src="{% static 'images/fish.png' %}" alt="Fish logo" />
 </div>
 
-<form action="" method="post" class="form-container" style="border: 5px solid rgb(20, 8, 0);">
+<form action="" method="post" class="form-container" style="
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 4px solid rgb(20, 8, 0);
+  border-radius: 12px;
+  background-color: #d13d10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+">
   {% csrf_token %}
   <table>
     {{ form.as_table }}

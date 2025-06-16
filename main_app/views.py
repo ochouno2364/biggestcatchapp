@@ -2,13 +2,31 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
 from .models import Trip, Fish
 from .forms import LocationForm
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 
 
 # Create your views here.
+def signup(request):
+    error_message = ''
+    if request.method =='POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('trip-index')
+        else:
+            error_message = 'Invalid sign-up try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'signup.html', context)
 
 
 class Home(LoginView):
@@ -32,11 +50,12 @@ def about(request):
 # #     Trip('last Trip', 8-1-2017, 'openfaced reel', 'catfish'),
 # # ]
 
+@login_required
 def trip_index(request):
-    trips = Trip.objects.all()
+    trips = Trip.objects.filter(user=request.user)
     return render(request, 'trips/tripindex.html', {'trips': trips})
 
-
+@login_required
 def trip_detail(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
     fish = Fish.objects.all()
@@ -49,19 +68,25 @@ def trip_detail(request, trip_id):
         })
 
 
-class TripCreate(CreateView):
+class TripCreate(LoginRequiredMixin, CreateView):
     model = Trip
     fields = ['name', 'date', 'gear']
 
-class TripUpdate(UpdateView):
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+    
+
+class TripUpdate(LoginRequiredMixin, UpdateView):
     model = Trip
     fields = '__all__'
 
-class TripDelete(DeleteView):
+
+class TripDelete(LoginRequiredMixin, DeleteView):
     model = Trip
     success_url = '/trips/'
     
-
+@login_required
 def add_location(request, trip_id):
     form = LocationForm(request.POST)
     if form.is_valid():
@@ -71,30 +96,34 @@ def add_location(request, trip_id):
     return redirect('trip-detail', trip_id=trip_id )
 
 
-class FishCreate(CreateView):
+class FishCreate(LoginRequiredMixin, CreateView):
     model = Fish
     fields = '__all__'
 
-class FishList(ListView):
+
+class FishList(LoginRequiredMixin, ListView):
     model = Fish
 
-class FishDetail(DetailView):
+
+class FishDetail(LoginRequiredMixin, DetailView):
     model = Fish
 
-class FishUpdate(UpdateView):
+
+class FishUpdate(LoginRequiredMixin, UpdateView):
     model = Fish
     fields = ['color', 'weight', 'bait']
 
-class FishDelete(DeleteView):
+
+class FishDelete(LoginRequiredMixin, DeleteView):
     model = Fish
     success_url = '/fish/'
     
-
+@login_required
 def associate_fish(request, trip_id, fish_id):
     Trip.objects.get(id=trip_id).fish.add(fish_id)
     return redirect('trip-detail', trip_id=trip_id)
 
-
+@login_required
 def remove_fish(request, trip_id, fish_id):
     trip = Trip.objects.get(id=trip_id)
     fish = Fish.objects.get(id=fish_id)

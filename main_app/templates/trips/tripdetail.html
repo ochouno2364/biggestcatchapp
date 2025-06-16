@@ -4,7 +4,9 @@
 <link rel="stylesheet" href="{% static 'css/trips/trip-detail.css' %}" />
 {% endblock %} 
 {% block content %}
-<section class="trip-container">
+  <div class="page-wrapper" style="padding-top: 80px;" >
+    <div style="margin: 0 auto; max-width: 960px; width: 100%; padding: 0 16px; display: flex; flex-direction: column; align-items: center;">
+    <section class="trip-container">
   <div class="trip-img">
     <img src="{% static 'images/fish.png' %}" alt="fish logo" />
   </div>
@@ -48,14 +50,21 @@
   cursor: pointer;">Delete</a>
   </div>
 </section>
-   <!-- Existing cat-container above -->
-<div class="location-container">
-  <section class="locations">
+   <!-- Existing trip-container above -->
+  <section class="locations" style="margin-top: 2rem;">
     <div class="subsection-title">
       <h2>Trip Location</h2>
     </div>
     <div class="subsection-content">
-    <form style="border: 5px solid rgb(12, 11, 11); border-style: hidden;"
+    <form style="
+      flex: 1;
+      max-width: 500px;
+      padding: 2rem;
+      border: 4px solid rgb(20, 8, 0);
+      border-radius: 12px;
+      background-color: #e99c85;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;"
       method="post"
       action="{% url 'add-location' trip.id %}"
       autocomplete="off"
@@ -98,7 +107,6 @@
     </table>
   </div> 
  </section>
-</div>
 <section class="fish">
   <div class="subsection-title">
     <h2>Fish</h2>
@@ -107,7 +115,15 @@
   <div class="subsection-content">
     {% if trip.fish.count %} 
       {% for fish in trip.fish.all %}
-        <div class="fish-container">
+        <div class="fish-container" style="
+      flex: 1;
+      max-width: 500px;
+      padding: 2rem;
+      border: 4px solid rgb(20, 8, 0);
+      border-radius: 12px;
+      background-color: #79f666;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
           <div class="color-block" style="background-color: {{ fish.color }}"></div>
           <a href="{% url 'fish-detail' fish.id %}">
             <p>A {{ fish.color }} {{ fish.name }}</p>
@@ -119,7 +135,7 @@
   padding: 8px 16px;
   font-size: 1rem;
   border: none;
-  border-radius: 4px;
+  border: 1px solid black;
   cursor: pointer;">Remove Fish</button>
         </form>
         </div>
@@ -133,19 +149,27 @@
 <div class="subsection-content">
   {% if fish.count %} 
     {% for fish in fish.all %}
-      <div class="fish-container">
+      <div class="fish-container" style="
+      flex: 1;
+      max-width: 500px;
+      padding: 2rem;
+      border: 4px solid rgb(20, 8, 0);
+      border-radius: 12px;
+      background-color: #35a5e2;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
         <div class="color-block" style="background-color: {{ fish.color }}"></div>
         <a href="{% url 'fish-detail' fish.id %}">
           <p>A {{ fish.color }} {{ fish.name }}</p>
         </a>
         <form action="{% url 'associate-fish' trip.id fish.id %}" method="post">
           {% csrf_token %}
-          <button type="submit" style="background-color: var(--primary-color, #06c930);
+          <button type="submit" style="background-color: var(--primary-color, #06c927);
   color: white;
   padding: 8px 16px;
   font-size: 1rem;
   border: none;
-  border-radius: 4px;
+  border: 1px solid black;
   cursor: pointer;">Assign Fish</button>
         </form>
       </div>
@@ -153,7 +177,9 @@
   {% else %}
     <p class="all-fish">{{trip.name}} already has all the available fish 🥳</p>
   {% endif %}
+</section>
+</div>
 </div>
 
-</section>
+
 {% endblock %}

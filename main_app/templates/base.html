@@ -19,7 +19,7 @@
       <div class="header-container">
         <!-- Logo -->
         <div class="logo">
-          <a href="/"
+          <a href="{% url 'home' %}"
             ><img
               src="{% static 'images/fish.png' %}"
               alt="Fish Logo"
@@ -37,7 +37,7 @@
           <!-- Shopping Cart Icon -->
           <div id="cartIcon" class="cart-icon-container">
             <a href="{% url 'fish-index' %}">
-              <img src="{% static 'images/fishicon.svg' %}" alt="Fish Icon" />
+              <img style="max-width: 50px;" src="{% static 'images/fishicon.svg' %}" alt="Fish Icon" />
             </a>
           </div>
         </div>
@@ -46,7 +46,6 @@
       <nav class="nav-links" id="nav-links" style="background-color: black;">
        <ul>
          {% if user.is_authenticated %}
-           <li><a href="{% url 'home' %}"  style="color: rgb(245, 242, 242);">Logout</a></li>
            <li><a href="{% url 'trip-index' %}" style="color: rgb(245, 242, 242);">My Trips</a></li>
            <li><a href="{% url 'trip-create' %}" style="color: rgb(245, 242, 242);">Add A Trip</a></li>
            <li><a href="{% url 'fish-create' %}" style="color: rgb(245, 242, 242);">Caught A Fish?</a></li>
@@ -54,9 +53,26 @@
            <li><a href="{% url 'about' %}" style="color: rgb(245, 242, 242);">About</a></li>
            <li style="color: #b7b7b7">Book Trip</li>
            <li style="color: #b7b7b7">Account</li>
+           <li>
+            <form id="logout-form" method="post" action="{% url 'logout' %}">
+              {% csrf_token %}
+              <button style="text-decoration: none;
+               color: var(--text-color);
+               font-weight: 600;
+               font-size: 16px;
+               background: none;
+               border: none;
+               cursor: pointer;
+               padding: 0;
+               font-family: inherit;" 
+               type="submit"
+               >Logout</button>
+            </form>
+           </li>
          {% else %}
-           <li><a href="{% url 'about' %}">About</a></li>
-           <li><a href="{% url 'home' %}">Login</a></li>
+           <li><a href="{% url 'about' %}" style="color: rgb(236, 239, 241);">About</a></li>
+           <li><a href="{% url 'home' %}"  style="color: rgb(236, 239, 241);">Login</a></li>
+           <li><a href="{% url 'signup' %}"  style="color: rgb(236, 239, 241);">Sign Up</a></li>
          {% endif %}
        </ul>
      </nav>

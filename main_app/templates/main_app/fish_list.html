@@ -6,11 +6,11 @@
 {% block content %}
 
 <section class="page-header">
-  <h1>The Honey Hole</h1>
+  <h1 style="text-align: center;">The Honey Hole</h1>
 
 </section>
 
-<section class="card-container">
+<section class="card-container" style="display: flex; flex-wrap: row-wrap; justify-content: center; gap: 1rem;">
   {% if fish_list %}
   {% for fish in fish_list %}
     <div class="card" style=" border-color: rgb(17, 4, 1); background-color: {{ fish.color }};" >

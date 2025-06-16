@@ -18,6 +18,7 @@ urlpatterns = [
     path('fish/<int:pk>/delete', views.FishDelete.as_view(), name='fish-delete'),
     path('fish/<int:trip_id>/associate-fish/<int:fish_id>/', views.associate_fish, name='associate-fish'),
     path('trips/<int:trip_id>/remove-fish/<int:fish_id>/', views.remove_fish, name='remove-fish'),
+    path('accounts/signup/', views.signup, name='signup')
 
 
 ]

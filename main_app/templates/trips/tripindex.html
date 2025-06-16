@@ -4,15 +4,15 @@
   href="{% static 'css/trips/trip-index.css' %}"
 />
 {% endblock %} {% block content %}
-<main style="background-color:#d13d10; border: 5px solid black;">
+<main style="background-color:#d13d10; border: 5px solid black; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;">
 <section class="page-header">
-  <h1>My Trips</h1>
+  <h1 style="text-align: center;">My Trips</h1>
 
 </section>
-
-<section class="card-container">
+{% if trips %}
+<section class="card-container" style="display: flex; flex-wrap: row-wrap; justify-content: center; gap: 1rem;">
   {% for trip in trips %}
-  <div class="card">
+  <div class="card" >
     <a href="{% url 'trip-detail' trip.id %}">
       <div class="card-content">
        <div class="card-img-container">
@@ -21,7 +21,7 @@
            alt="trip"
          />
        </div>
-       <h2 class="card-title">{{ trip.name }}</h2>
+       <h2 class="card-title" style="text-align: center;">{{ trip.name }}</h2>
        {% if trip.fish > 0 %}
        <p>On {{ trip.name }} you caught {{ trip.fish }} with {{ trip.gear }}</p>
        {% else %}
@@ -33,6 +33,9 @@
   </div>
   {% endfor %}
 </section>
+{% else %}
+<p>so</p>
+{% endif %}
 </main>
 
 {% endblock %}
