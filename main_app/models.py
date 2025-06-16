@@ -33,17 +33,40 @@ BAIT = (
     ('L', 'Lure'),
 )
 
+
+class Fish(models.Model):
+    name = models.CharField(max_length=50)
+    species = models.CharField(max_length=50)
+    color = models.CharField(max_length=50)
+    weight = models.IntegerField()
+    bait = models.CharField(max_length=50, default=[0][0], choices=BAIT)
+
+    def __str__(self):
+        return self.name
+    
+    def get_absolute_url(self):
+        return reverse('fish-detail', kwargs ={'pk': self.id})
+    
+
+
+
+
 class Trip(models.Model):
     name = models.CharField(max_length=50)
     date = models.DateField('Date Of Trip')
     gear = models.CharField(max_length=100)
-    # fish = models.ManyToManyField()
+    fish = models.ManyToManyField(Fish)
 
     def __str__(self):
         return self.name
     
     def get_absolute_url(self):
         return reverse('trip-detail', kwargs={'trip_id': self.id})
+    
+
+
+
+    
 
 class Location(models.Model):
     name = models.CharField(max_length=50)
@@ -58,15 +81,3 @@ class Location(models.Model):
         return f"{self.name} {self.get_body_display()} at {self.address}"
 
 
-class Fish(models.Model):
-    name = models.CharField(max_length=50)
-    species = models.CharField(max_length=50)
-    color = models.CharField(max_length=50)
-    weight = models.IntegerField()
-    bait = models.CharField(max_length=50, default=[0][0], choices=BAIT)
-
-    def __str__(self):
-        return self.name
-    
-    def get_absolute_url(self):
-        return reverse('fish-detail', kwargs ={'pk': self.id})

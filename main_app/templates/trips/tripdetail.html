@@ -16,11 +16,26 @@
       <h2>On {{ trip.date }} you just went and had fun.</h2>
     {% endif %}
     <p>This is what you caught</p>
+    <div class="subsection-content">
+    {% if trip.fish.count %} 
+      {% for fish in trip.fish.all %}
+        <div class="fish-container">
+          <div class="color-block" style="background-color: {{ fish.color }}"></div>
+          <a href="{% url 'fish-detail' fish.id %}">
+            <p>A {{ fish.color }} {{ fish.name }}</p>
+          </a>
+        </div>
+      {% endfor %} 
+    {% else %}
+      <p class="no-fish">{{ trip.name}} no fish were caught!</p>
+    {% endif %}
+  </div>
   </div>
   <div class="trip-actions">
     <a href="{% url 'trip-update' trip.id %}" class="btn warn">Edit</a>
     <a href="{% url 'trip-delete' trip.id %}" class="btn danger">Delete</a>
   </div>
+</section>
    <!-- Existing cat-container above -->
 <div class="location-container">
   <section class="locations">
@@ -64,5 +79,49 @@
     </table>
   </section>
 </div>
+<section class="fish">
+  <div class="subsection-title">
+    <h2>Fish</h2>
+  </div>
+  <h3>{{ trip.name }}'s Catch</h3>
+  <div class="subsection-content">
+    {% if trip.fish.count %} 
+      {% for fish in trip.fish.all %}
+        <div class="fish-container">
+          <div class="color-block" style="background-color: {{ fish.color }}"></div>
+          <a href="{% url 'fish-detail' fish.id %}">
+            <p>A {{ fish.color }} {{ fish.name }}</p>
+          </a>
+          <form action="{% url 'remove-fish' trip.id fish.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn submit">Remove Fish</button>
+        </form>
+        </div>
+      {% endfor %} 
+    {% else %}
+      <p class="no-fish">{{ trip.name}} no fish were caught!</p>
+    {% endif %}
+  </div>
+
+  <h3>Available Fish</h3>
+<div class="subsection-content">
+  {% if fish.count %} 
+    {% for fish in fish.all %}
+      <div class="fish-container">
+        <div class="color-block" style="background-color: {{ fish.color }}"></div>
+        <a href="{% url 'fish-detail' fish.id %}">
+          <p>A {{ fish.color }} {{ fish.name }}</p>
+        </a>
+        <form action="{% url 'associate-fish' trip.id fish.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn submit">Assign Fish</button>
+        </form>
+      </div>
+    {% endfor %} 
+  {% else %}
+    <p class="all-fish">{{trip.name}} already has all the available fish 🥳</p>
+  {% endif %}
+</div>
+
 </section>
 {% endblock %}

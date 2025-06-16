@@ -20,7 +20,7 @@
   width: 98%;
 }
 
-.cat-actions {
+.trip-actions {
   margin-top: 20px;
 }
 
@@ -41,7 +41,7 @@
   margin: 0 8px;
 }
 
-.toy-container {
+.fish-container {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -54,21 +54,20 @@
   margin-right: 10px;
 }
 
-.unfed,
-.fed,
-.no-toys,
-.all-toys {
+
+.no-fish,
+.all-fish {
   margin: 0;
   font-weight: bold;
 }
 
-.unfed,
-.no-toys {
+
+.no-fish {
   color: var(--danger);
 }
 
-.fed,
-.all-toys {
+
+.all-fish {
   color: var(--submit);
 }
 
@@ -117,13 +116,13 @@
 }
 
 .locations h2,
-.toys h2 {
+.fish h2 {
   font-size: 3.2rem;
   margin: 0;
 }
 
 .locations h3,
-.toys h3 {
+.fish h3 {
   font-size: var(--font-xl);
   margin: 10px 0;
 }
@@ -162,16 +161,16 @@
   background-color: #f3f3fd;
 }
 
-.toy-container p {
+.fish-container p {
   margin: 12px 0;
 }
 
-.toy-container a {
+.fish-container a {
   text-decoration: none;
   color: #111;
 }
 
-.toy-container .btn {
+.fish-container .btn {
   padding: 3px 10px;
   margin-left: 10px;
 }

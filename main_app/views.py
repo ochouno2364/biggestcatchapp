@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -38,13 +38,19 @@ def trip_index(request):
 
 def trip_detail(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
+    fish = Fish.objects.all()
+    fish_trip_doesnt_have = Fish.objects.exclude(id__in = trip.fish.all().values_list('id'))
     location_form = LocationForm()
-    return render(request, 'trips/tripdetail.html', {'trip': trip, 'location_form': location_form})
+    return render(request, 'trips/tripdetail.html', {
+        'trip': trip,
+        'location_form': location_form,
+        'fish': fish_trip_doesnt_have
+        })
 
 
 class TripCreate(CreateView):
     model = Trip
-    fields = '__all__'
+    fields = ['name', 'date', 'gear']
 
 class TripUpdate(UpdateView):
     model = Trip
@@ -82,3 +88,15 @@ class FishDelete(DeleteView):
     model = Fish
     success_url = '/fish/'
     
+
+def associate_fish(request, trip_id, fish_id):
+    Trip.objects.get(id=trip_id).fish.add(fish_id)
+    return redirect('trip-detail', trip_id=trip_id)
+
+
+def remove_fish(request, trip_id, fish_id):
+    trip = Trip.objects.get(id=trip_id)
+    fish = Fish.objects.get(id=fish_id)
+    trip.fish.remove(fish)
+    
+    return redirect('trip-detail', trip_id=trip.id)
