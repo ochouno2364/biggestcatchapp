@@ -1,7 +1,8 @@
-# StrikeOne App
+# The Biggest Catch App
 
-#### Connect With Players and Coaches Near You!! 
-![Screenshot 2025-02-25 171955](https://github.com/user-attachments/assets/51c05bbc-e688-4fa4-9d86-39ea5906bcc9)
+#### Log Fishing Trips and Find Honey Holes!! 
+![Screenshot 2025-06-16 catchapp](https://github.com/user-attachments/assets/95d8920a-9136-4ca4-8328-17f8a41de57d)
+
 
  Welcome to The Biggest Catch, growing up my mom would take me fishing and we would catch some of everything!
  We also took many trips that i wish i could remember, to one day take my kids.
@@ -20,6 +21,8 @@
 * Django
 * Pipenv
 * Views
+* SQL
+* POSGRESQL
 * HTML
 * CSS
 
@@ -36,18 +39,18 @@
 
 ## <a name="nextsteps"></a>Project Next Steps
 #### List of Future Features
-* Allow users to see each others post from diffrent sessions.
-* Allow a user to include a picture.
+* Allow users to see each others location from diffrent users.
+* Allow a user to include a picture of there cath.
 * Allow users to message one another through the app.
 * Set up a user inbox.
-* Using an api to generate other profiles from the web.
+* Using an api to generate other locations from the web.
 
 
 ## <a name="deployment"></a>Deployed Link
 
 
 * You can view the repository:
-[Github.com](https://github.com/ochouno2364/strike-one-meetings-app)
+[Github.com](https://github.com/ochouno2364/biggestcatchapp/tree/main)
 * If unable to view please go live locally through VS Code -->
 
 ## <a name="author"></a>About The Author
