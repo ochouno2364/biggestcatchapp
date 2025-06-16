@@ -6,7 +6,7 @@
 {% endblock %} {% block content %}
 
 <section class="logo-container">
-  <div class="cat-container">
+  <div class="trip-container">
     <img
       src="{% static 'images/fish.png' %}"
       alt="Fish Logo"
@@ -18,7 +18,7 @@
     <h1>Login</h1>
     {% csrf_token %} {{ form.as_p }}
     <input type="hidden" name="next" value="{{ next }}" />
-    <button type="submit" class="btn submit">Login</button>
+    <button type="submit" class="btn">Login</button>
   </form>
 </section>
 
