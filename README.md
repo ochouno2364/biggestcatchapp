@@ -61,3 +61,6 @@ I am a software engineering student that is eager to learn diffrerent ways in ex
     
 ## Works Cited:
 https://generalassembly.instructure.com/courses/633/pages/django-crud-app-cat-collector?module_item_id=51614
+https://www.w3schools.com/python/python_syntax.asp
+https://www.w3schools.com/python/python_for_loops.asp
+https://www.w3schools.com/css/css_border.asp
