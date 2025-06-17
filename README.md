@@ -1,7 +1,8 @@
 # The Biggest Catch App
 
 #### Log Fishing Trips and Find Honey Holes!! 
-![Screenshot 2025-06-16 catchapp](https://github.com/user-attachments/assets/95d8920a-9136-4ca4-8328-17f8a41de57d)
+![Screenshot 2025-06-16 201738](https://github.com/user-attachments/assets/1534ad35-7366-45d9-9ff0-2a77df8a5848)
+
 
 
  Welcome to The Biggest Catch, growing up my mom would take me fishing and we would catch some of everything!
@@ -61,3 +62,6 @@ I am a software engineering student that is eager to learn diffrerent ways in ex
     
 ## Works Cited:
 https://generalassembly.instructure.com/courses/633/pages/django-crud-app-cat-collector?module_item_id=51614
+https://www.w3schools.com/python/python_syntax.asp
+https://www.w3schools.com/python/python_for_loops.asp
+https://www.w3schools.com/css/css_border.asp
